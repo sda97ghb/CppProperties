@@ -5,12 +5,15 @@
 
 class Test {
 public:
+	// Auto generate getters and setters
 	Property<int> SimpleIntProp;
 	Property<QString> SimpleStrProp;
 
+	// Getters and setters will be set in the constructor
 	Property<int> IntProp;
 	Property<QString> StrProp;
 
+	// Read-only properties, getters will be set in the constructor
 	Property<int> ReadOnlyIntProp;
 	Property<QString> ReadOnlyStrProp;
 	Property<QStringList> ReadOnlyStringsProp;
@@ -18,14 +21,23 @@ public:
 
 	Test() :
 		m_v(-1) {
+		// Retranslate getter and setters calls to methods of this object
 		IntProp = Property<int>::of(this, &Test::v, &Test::setV);
 		StrProp = Property<QString>::of(this, &Test::str, &Test::setStr);
+
+		// Set const getter from lambda
 		ReadOnlyIntProp = Property<int>::readOnlyOf([](const int& field) {
 			Q_UNUSED(field)
 			return 42;
 		});
+
+		// Set const getter from value
 		ReadOnlyStrProp = Property<QString>::readOnlyOf("Hello World!");
+
+		// Retranslate getter call to method of this object, deny setter
 		ReadOnlyStringsProp = Property<QStringList>::readOnlyOf(this, &Test::strings);
+
+		// Retranslate getter call to static method, deny setter
 		ReadOnlyIntsProp = Property<QList<int>>::readOnlyOf(&Test::ints);
 	}
 
