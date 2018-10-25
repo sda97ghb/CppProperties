@@ -8,13 +8,13 @@ to copy *include/Propery* directory to your project.
 
 There are two property class templates: **Property\<T\>** and **ObservableProperty\<T\>**.
 
-Template argument **T** can be of any compatible with C++:
+Template argument **T** can be of any type compatible with C++:
 - primitive type such as **int** or **double**
 - C++ class such as **std::string** or **std::list\<std::string\>**
 - Qt class such as **QString** or **QVariantList**
 
 **Property\<T\>** holds a value of type T and has mechanism of assigning user defined getter and setter. 
-If getter and setter is not provided by user default getter and setter will be used.
+If getter and setter are not provided by user default getter and setter will be used.
 
 **ObservableProperty\<T\>** can do all work of **Property\<T\>** and also add an ability to assign an 
 observer which will get property change notifications.
@@ -38,7 +38,7 @@ Also you can use get and set methods of the propery.
 # Property\<T\>
 
 This type of property holds a value of type T and has mechanism of assigning user defined getter and setter. 
-If getter and setter is not provided by user default getter and setter will be used.
+If getter and setter are not provided by user default getter and setter will be used.
 
 First of all you need to include the header and use the class from namespace (if you wish).
 ```c++
@@ -75,12 +75,12 @@ DEFAULT_SETTER = [](const T& value, T& field) -> void {
 };
 ```
 
-There are few ways of assignment of custom getters and setters.
+There are few ways of assigning of custom getters and setters.
 
 ## Getter and setter from lambda
-Custom getters and setters can be set from lambdas. 
+Custom getters and setters can be set from lambda functions.
 
-Default getter and setter is defined as Property<T>::DEFAULT_GETTER and Property<T>::DEFAULT_SETTER and can be used as parameters here.
+Default getter and setter are defined as Property<T>::DEFAULT_GETTER and Property<T>::DEFAULT_SETTER respectively and can be used as parameters here.
 ```c++
 User::User() {
     // Set getter and setter from lambda.
@@ -129,7 +129,7 @@ void User::setName(const QString& name) {
 
 ## Read-only properties
 
-Property can be set as read-only. There are few ways to do this:
+Property can be set as read-only. There are few ways of doing this:
 ```c++
 // Set special read-only setter
 Name = Property<QString>::of(getter, Property<QString>::READ_ONLY_SETTER);
@@ -158,7 +158,7 @@ Name = Property<QString>::readOnlyOf("John Doe");
 If setter of read-only property is called **Property\<T\>::CallSetterOfReadOnlyPropertyException** will be thrown.
 
 # ObservableProperty\<T\>
-Observable properties are similar to usual properties but also can be observed.
+Observable properties are similar to usual properties but also can be observed. Each observable property can have any number of observers.
 
 ## Observing mechanism
 ```c++
@@ -179,7 +179,7 @@ void f(User& user) {
 ## Notification mechanism
 
 As soon as observable properties need a mechanism to notify their subscribers about changes happend in setters
-we need a new special syntax of sending notifications. Because of this we got new parameter in setters:
+we need a new special syntax of sending notifications. Because of this we've got new parameter in setters:
 
 ```c++
 class User {
@@ -229,7 +229,7 @@ private:
 
 **ObservableProperty\<T\>** is fully compatible with **Q_PROPERTY.**
 
-Two examples of usage **Q_PROPERTY** and **ObservableProperty\<T\>** in one class
+Two examples of usage **Q_PROPERTY** and **ObservableProperty\<T\>** in the same class
 can be found in `test/UserA.*` and `test/UserB.*` classes.
 
 **UserA** is an example of possible migration from **Q_PROPERTY** class to **ObservableProperty\<T\>** class.
