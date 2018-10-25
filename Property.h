@@ -63,7 +63,7 @@ public:
 		m_setter(value, m_value);
 	}
 
-	operator T() {
+	operator T() const {
 		return m_getter(m_value);
 	}
 

@@ -74,7 +74,7 @@ public:
 		m_setter(value, m_value, notifier());
 	}
 
-	operator T() {
+	operator T() const {
 		return m_getter(m_value);
 	}
 

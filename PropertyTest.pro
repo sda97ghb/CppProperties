@@ -17,7 +17,10 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
         main.cpp \
     PropertyTest.cpp \
-    ObservablePropertyTest.cpp
+    ObservablePropertyTest.cpp \
+    ObservablePropertyQtIntegrationTest.cpp \
+    UserA.cpp \
+    UserB.cpp
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -28,4 +31,7 @@ HEADERS += \
     Property.h \
     ObservableProperty.h \
     PropertyTest.h \
-    ObservablePropertyTest.h
+    ObservablePropertyTest.h \
+    ObservablePropertyQtIntegrationTest.h \
+    UserA.h \
+    UserB.h
