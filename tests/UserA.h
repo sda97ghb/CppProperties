@@ -1,9 +1,11 @@
 #ifndef USERA_H
 #define USERA_H
 
-#include "ObservableProperty.h"
+#include "Property/ObservableProperty.h"
 
 #include <QObject>
+
+using property::ObservableProperty;
 
 class UserA : public QObject {
 	Q_OBJECT

@@ -1,7 +1,9 @@
-#include "ObservableProperty.h"
+#include "Property/ObservableProperty.h"
 #include "ObservablePropertyTest.h"
 
 #include <QtDebug>
+
+using property::ObservableProperty;
 
 class ReadOnlyTest {
 public:

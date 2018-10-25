@@ -1,7 +1,9 @@
-#include "Property.h"
+#include "Property/Property.h"
 #include "PropertyTest.h"
 
 #include <QtDebug>
+
+using property::Property;
 
 class Test {
 public:
